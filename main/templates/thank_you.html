@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div >
+    <div class="container">
+        <div style="display: flex; flex-direction: column; text-align: left;  padding: 6% 0;">
+            <h2>Thank You!</h2>
+            <p>Your data has been transferred and our specialist will contact you soon.</p>
+            <a href="{% url 'home' %}"><button type="button">Go back to the main page</button></a>
+        </div>
+    </div>
+</div>
+
+<div class="fireworks-container" id="fireworksContainer"></div>
+
+<!-- JS for Fireworks -->
+<script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.10.7/dist/index.umd.min.js"></script>
+<script>
+    window.onload = function() {
+        const container = document.getElementById('fireworksContainer');
+        const fireworks = new Fireworks.default(container, {
+            speed: 2,
+            autoresize: true,
+            opacity: 0.5,
+            acceleration: 1.05,
+            friction: 0.97,
+            gravity: 1.5,
+            particles: 50,
+            trace: 3,
+            explosion: 5,
+            intensity: 30,
+            flickering: 50,
+            lineStyle: 'round',
+            hue: {
+                min: 0,
+                max: 360
+            },
+            delay: {
+                min: 30,
+                max: 60
+            },
+            brightness: {
+                min: 50,
+                max: 80,
+                decay: {
+                    min: 0.015,
+                    max: 0.03
+                }
+            },
+            boundaries: {
+                x: 50,
+                y: 50,
+                width: container.clientWidth,
+                height: container.clientHeight
+            },
+            sound: {
+                enabled: false
+            }
+        });
+
+        fireworks.start();
+
+        setTimeout(() => {
+            fireworks.stop();
+        }, 10000); // Duration of fireworks in milliseconds
+    };
+</script>
+
+{% endblock content %}

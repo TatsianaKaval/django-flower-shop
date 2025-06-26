@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="product-grid-wrapper">
+        <div class="grid">
+            {% for product in products %}
+                <div class="product-item">
+                    <a href="{% url 'product' product.id %}">
+                        <h3>{{product.title}}</h3>
+                    </a>
+                        {% if product.image %}
+                            <img width="200px" height="200px" src="{{product.image.url}}">
+                        {% endif %}
+                    <p>Price ${{product.price}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

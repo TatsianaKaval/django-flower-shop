@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flower shop</title>
+    <link rel="stylesheet" href="{% static 'main/style/style.css' %}">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <style>
+        .fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .errorlist {
+            color: #005be4;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header-container">
+                <div class="header-top">
+                    <div class="logo">
+                        <a href="{% url 'home' %}"><img src="{% static 'main/img/logo.jpeg' %}"
+                            style="border-radius: 50% / 40%;"></a>
+                    </div>
+                    <div class="header-text">
+                        <h1>
+                            <a href="{% url 'home' %}">Welcome to the Flower Shop</a>
+                        </h1>
+                    </div>
+                </div>
+    
+                <div class="navigation">
+                    <nav>
+                        <ul>
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'order_form' %}">Order</a></li>
+                            <li><a href="{% url 'about' %}">About</a></li>
+                            <li><a href="{% url 'contacts' %}">Contacts</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    
+        <main>
+            <div class="main-container">
+                {% block content %}
+                {% endblock content%}
+            </div>
+        </main>
+    
+    
+        <footer>
+            <div class="footer-container">
+                <div class="footer-about">
+                    <h4>About Flower Shop</h4>
+                    <p>Your go to place for the freshest flowers and beautiful bouquets.</p>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 Flower Shop. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>  
+    </div>
+
+</body>
+</html>
